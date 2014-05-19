@@ -1,8 +1,8 @@
 # Public: Calculate value within interval 0 to max_value
 #
 # current_value - The minimum value in the interval.
-# max_value - The maximum value in the interval.
-# value     - The value to be calculated in the equation.
+# max_value     - The maximum value in the interval.
+# value         - The value to be calculated in the equation.
 #
 # Examples
 #
@@ -22,6 +22,21 @@ def interval_value(current_value, max_value, value)
     return current_value - value
   end
 end
+
+# Public: Decrypts a alphabetical string (A-Z) with a offset
+#
+# content - The content to be decrypted.
+# offset  - The decryption offset.
+#
+# Examples
+#
+#   decrypt('WKH TXLFN EURZQ IRA MXPSV RYHU WKH ODCB GRJ', 3)
+#   # =>  'the quick brown fox jumps over the lazy dog'
+#   decrypt('IWT FJXRZ QGDLC UDM YJBEH DKTG IWT APON SDV', -11)
+#   # =>  'the quick brown fox jumps over the lazy dog'
+#
+# Returns the decrypted string
+
 
 def decrypt(content, offset)
   content = content.dup
@@ -51,6 +66,20 @@ def decrypt(content, offset)
 
   return content.downcase
 end
+
+# Public: Encrypts a alphabetical string (A-Z) with a offset
+#
+# content - The content to be encrypted.
+# offset  - The encryption offset.
+#
+# Examples
+#
+#   encrypt('the quick brown fox jumps over the lazy dog', 3)
+#   # =>  'WKH TXLFN EURZQ IRA MXPSV RYHU WKH ODCB GRJ'
+#   encrypt('IWT FJXRZ QGDLC UDM YJBEH DKTG IWT APON SDV', -11)
+#   # =>  'IWT FJXRZ QGDLC UDM YJBEH DKTG IWT APON SDV'
+#
+# Returns the encrypted string
 
 def encrypt(content, offset)
   return decrypt(content, offset * -1).upcase
