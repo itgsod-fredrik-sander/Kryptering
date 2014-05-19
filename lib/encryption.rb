@@ -11,13 +11,9 @@ end
 def decrypt(content, offset)
   content = content.dup
 
-  if content.length == 0
-    raise ArgumentError, 'String must not be empty'
-  end
+  raise ArgumentError, 'String must not be empty' if content.empty?
 
-  if offset == 0
-    raise ArgumentError, 'Offset must not be zero'
-  end
+  raise ArgumentError, 'Offset must not be zero' if offset == 0
 
   if content != content.upcase
   	content.upcase!
