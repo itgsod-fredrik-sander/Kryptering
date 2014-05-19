@@ -1,7 +1,6 @@
 require 'rspec'
 require_relative '../lib/encryption'
 
-
 describe 'encryption' do
 
   before do
@@ -35,7 +34,7 @@ describe 'encryption' do
   end
 
   it 'should accept negative offsets' do
-    encrypt(@cleartext, -2).should match 'RFC OSGAI ZPMUL DMV HSKNQ MTCP RFC JYXW BME'
+     encrypt(@cleartext, -2).should match 'RFC OSGAI ZPMUL DMV HSKNQ MTCP RFC JYXW BME'
     encrypt(@cleartext, -11).should match 'IWT FJXRZ QGDLC UDM YJBEH DKTG IWT APON SDV'
     encrypt(@cleartext, -4).should match 'PDA MQEYG XNKSJ BKT FQILO KRAN PDA HWVU ZKC'
   end

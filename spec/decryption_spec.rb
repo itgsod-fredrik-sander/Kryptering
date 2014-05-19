@@ -37,5 +37,4 @@ describe 'decryption' do
     decrypt('IWT FJXRZ QGDLC UDM YJBEH DKTG IWT APON SDV', -11).should match @cleartext
     decrypt('PDA MQEYG XNKSJ BKT FQILO KRAN PDA HWVU ZKC', -4).should match @cleartext
   end
-
 end
