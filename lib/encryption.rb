@@ -1,10 +1,25 @@
-def interval_value(min_value, max_value, value)
-  if min_value - value < 0
-    return max_value + min_value - value
-  elsif min_value - value >= max_value
-    return min_value - value - max_value
+# Public: Calculate value within interval 0 to max_value
+#
+# current_value - The minimum value in the interval.
+# max_value - The maximum value in the interval.
+# value     - The value to be calculated in the equation.
+#
+# Examples
+#
+#   interval_value(4, 9, 2)
+#   # =>  2
+#   interval_value(1, 9, 2)
+#   # => 8
+#
+# Returns the new calculated value
+
+def interval_value(current_value, max_value, value)
+  if current_value - value < 0
+    return max_value + current_value - value
+  elsif current_value - value >= max_value
+    return current_value - value - max_value
   else
-    return min_value - value
+    return current_value - value
   end
 end
 
