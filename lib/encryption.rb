@@ -1,3 +1,13 @@
+def interval_value(min_value, max_value, value)
+  if min_value - value < 0
+    return max_value + min_value - value
+  elsif min_value - value >= max_value
+    return min_value - value - max_value
+  else
+    return min_value - value
+  end
+end
+
 def decrypt(content, offset)
   content = content.dup
 
@@ -26,14 +36,7 @@ def decrypt(content, offset)
 
     character_hash_index = character_hash[character]
 
-    if character_hash_index - offset < 0
-    	character_hash_index = character_hash.size + character_hash_index - offset
-    elsif character_hash_index - offset >= character_hash.size
-    	character_hash_index = character_hash_index - offset - character_hash.size
-    else
-    	character_hash_index -= offset
-    end
-
+    character_hash_index = interval_value(character_hash_index, character_hash.size, offset)
     content[index] = character_hash.invert[character_hash_index]
   end
 
