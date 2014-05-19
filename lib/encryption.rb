@@ -1,4 +1,4 @@
-# Public: Calculate value within interval 0 to max_value
+# Private: Calculate value within interval 0 to max_value
 #
 # current_value - The current value.
 # max_value     - The maximum value in the interval.
