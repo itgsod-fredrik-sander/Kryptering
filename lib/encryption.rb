@@ -94,6 +94,13 @@ end
 # Returns the encrypted string
 
 def encrypt(content, offset)
+  # Decrypting and crypting contains more or less the exact same code.
+  # The difference between those two methods is that decrypting by default takes a positive offset
+  # as negative in its calculations. That is why we, when calling the decrypting method, turn our offset
+  # around. With that being said, we go from + to - or - to + before executing our method call.
+  # As our encrypting method is supposed to return the encrypted content uppercase, 
+  # and decrypt returns the decrypted content lowercase, we call string's member method upcase.
+
   return decrypt(content, offset * -1).upcase
 end
 
