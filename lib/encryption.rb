@@ -47,23 +47,35 @@ def decrypt(content, offset)
 
   content.upcase!
 
-   character_hash = {"A" => 0, "B" => 1, "C" => 2, "D" => 3, "E" => 4, "F" => 5,
+  # We create an instance of a Hash to eazily access values and keys in our algorithm.
+  # The reason to why I decided to go with a Hash over an array was simple, it makes us able to go
+  # from character => index, index => character instead of an array where its index => character. 
+
+  character_hash = {"A" => 0, "B" => 1, "C" => 2, "D" => 3, "E" => 4, "F" => 5,
                    "G" => 6, "H" => 7, "I" => 8, "J" => 9, "K" => 10, "L" => 11,
                    "M" => 12, "N" => 13, "O" => 14, "P" => 15, "Q" => 16, "R" => 17,
                    "S" => 18, "T" => 19, "U" => 20, "V" => 21, "W" => 22, "X" => 23,
                    "Y" => 24, "Z" => 25}
 
+  # We iterate over each character in the content variable.
+  # For each character we move it by the offset variable's value within the character_hash interval.
+  # Then we replace the character with the new character.
+
   content.split("").each_with_index do |character, index|
     if character == " "
       next
     end
-
+    
+    # Get the character's value in character_hash
     character_hash_index = character_hash[character]
-
+    
+    # Calculate new value for the character within the character_hash interval relative to offset.
     character_hash_index = interval_value(character_hash_index, character_hash.size, offset)
+    # Replace the character with the character we calculated in the character_hash interval.
     content[index] = character_hash.invert[character_hash_index]
   end
 
+  # Return the decrypted variable content in small characters.
   return content.downcase
 end
 
